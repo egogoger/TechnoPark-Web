@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %} Sign Up {% endblock title %}
+
+{% block content %}
+
+<div class="row d-flex justify-content-left mt-3 mb-3">
+  <div class="col-md-4">
+    <h3>Register</h3>
+  </div>
+</div>
+
+<form class="mb-3">
+	<div class="form-group">
+		<label for="tags_input">Login</label>
+		<textarea class="form-control" id="tags_input" rows="1" placeholder="__jeff__"></textarea>
+	  <small id="emailHelp" class="form-text text-muted">That'll be your nickname</small>
+	</div>
+
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="jeff@jmail.com">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="qwerty1234">
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputPassword2">Repeat password</label>
+    <input type="password" class="form-control" id="exampleInputPassword2" placeholder="qwerty1234">
+  </div>
+
+  <div class="form-group form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Remember me</label>
+  </div>
+
+  <div class="form-group">
+    <label for="exampleFormControlFile1">Upload an avatar</label>
+    <input type="file" class="form-control-file" id="exampleFormControlFile1">
+  </div>
+
+  <button type="submit" class="btn btn-primary">Sign up!</button>
+</form>
+
+{% endblock content %}

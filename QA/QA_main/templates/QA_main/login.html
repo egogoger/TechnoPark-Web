@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} Login {% endblock title %}
+
+{% block content %}
+
+<style type="text/css">
+  .form_centered {
+    width: 221px;
+    margin: 0 auto;
+  }
+</style>
+
+<form class="form-signin text-center" style="margin: 5rem auto">
+	<img class="rounded mb-4" src="{% static 'images/joji.jpg' %}" alt="" width="144" height="144">
+	<h1 class="h2 mb-0 font-weight-normal">Please sign in</h1>
+	<p class="mb-2" style="margin-top: -0.8rem; color: #efefef"><small>or else</small></p>
+	<label for="inputEmail" class="sr-only">Email address</label>
+	<input type="email" id="inputEmail" class="form-control form_centered" placeholder="Email address" required="" autofocus="">
+	<label for="inputPassword" class="sr-only">Password</label>
+	<input type="password" id="inputPassword" class="form-control form_centered" placeholder="Password" required="">
+	<div class="checkbox mt-2 mb-2">
+		<label>
+			<input type="checkbox" value="remember-me"> Remember me
+		</label>
+	</div>
+	<button class="btn btn-lg btn-primary btn-block form_centered" type="submit">Sign in</button>
+	<p class="mt-5 mb-3 text-muted">© 2019-2020</p>
+</form>
+
+{% endblock content %}

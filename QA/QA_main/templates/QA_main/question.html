@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %} Question #number {% endblock title %}
+
+{% block content %}
+
+<div class="row d-flex justify-content-left mt-3 mb-3">
+  <div class="col-md-4">
+    <h3>Question</h3>
+  </div>
+</div>
+
+{% include 'Includes/question_card.html' %}
+
+<div class="container-fluid bg-dark" style="height: 1px;"></div>
+
+<div class="row d-flex justify-content-left mt-3 mb-3">
+  <div class="col-md-4">
+    <h3>Answers</h3>
+  </div>
+</div>
+
+{% include 'Includes/answer_card.html' %}
+{% include 'Includes/answer_card.html' %}
+{% include 'Includes/answer_card.html' %}
+
+<div class="container-fluid bg-dark" style="height: 1px;"></div>
+
+<div class="row d-flex justify-content-left mt-3 mb-3">
+  <div class="col-md-4">
+    <h3>Your answer</h3>
+  </div>
+</div>
+
+<div class="form-group">
+  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+</div>
+<button class="btn btn-lg btn-primary btn-block form_centered" type="submit" style="margin-bottom: 1rem;">Answer</button>
+
+{% endblock content %}
+

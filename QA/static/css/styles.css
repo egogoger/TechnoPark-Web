@@ -1,0 +1,5 @@
+body {
+/*	background-color: #f2f3ff;*/
+	background-color: black;
+/*	 background: url({% static 'images/myapp/my.png' %}) top left repeat;  */
+}

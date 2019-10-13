@@ -1,0 +1,44 @@
+{% load static %}
+
+<style type="text/css">
+  .my_card {
+    border: 1px solid white;
+    border-radius: 15px;
+    box-shadow: 0 0 5px #28e3c4;
+    padding: 20px;
+    transition-duration: 0.3s;
+  }
+  .my_card:hover {
+    background-color: #f2f3ff;
+    border: 1px solid #28e3b4;
+    transition-duration: 0.3s;
+  }
+</style>
+
+<!--Question card-->
+<div class="card mb-3 my_card">
+  <div class="row no-gutters">
+
+    <div class="col-md-3">
+      <a href="{% url 'question_url' %}"><img src="{% static 'images/joji.jpg' %}" class="card-img" alt="..."></a>
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-secondary">Y</button>
+        <button type="button" class="btn btn-secondary">N</button>
+      </div>
+    </div>
+
+    <div class="col-md-9">
+      <div class="card-body" style="padding: 0; margin-left: 20px;">
+        <a href="{% url 'question_url' %}"><h5 class="card-title">Question number 1</h5></a>
+        <p class="card-text">This is a wider card with supporting text below as a naturalead-in to additional content. This content is a little bit longer.</p>
+        <button type="button" class="btn btn-primary mb-2"><span class="badge badge-light">0</span>  Answers</button>
+        <div class="d-flex justify-content-left">
+          <a href="#" class="badge badge-secondary">Tag 1</a>
+          <a href="#" class="badge badge-secondary">Tag 2</a>
+        </div>
+        <p class="card-text"><small class="text-muted">Asked by *user at *date</small></p>
+      </div>
+    </div>
+    
+  </div>
+</div>
