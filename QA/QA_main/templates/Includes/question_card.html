@@ -13,20 +13,51 @@
     border: 1px solid #28e3b4;
     transition-duration: 0.3s;
   }
+  .my_rating {
+    max-width: 100px;
+    height: 38px;
+    margin: 1rem auto;
+  }
+  .my_rating button {
+    width: 25px; 
+    padding: 0;
+    font-size: 0.9rem;
+    transition-duration: 0.3s;
+  }
+  #my_rating_input {  /* why doesn't work " .my_rating input {} " ?? */
+    border: 1px solid #007bff;
+    background-color: white;
+    text-align: center;
+    max-height: 38px;
+    font-size: 1.25rem;
+  }
+  #my_rating_input::placeholder {
+    color: #007bff;
+  }
 </style>
 
 <!--Question card-->
 <div class="card mb-3 my_card">
   <div class="row no-gutters">
 
+    <!--Left side-->
     <div class="col-md-3">
+
       <a href="{% url 'question_url' %}"><img src="{% static 'images/joji.jpg' %}" class="card-img" alt="..."></a>
-      <div class="btn-group" role="group" aria-label="Basic example">
-        <button type="button" class="btn btn-secondary">Y</button>
-        <button type="button" class="btn btn-secondary">N</button>
-      </div>
+
+        <div class="input-group my_rating">
+          <div class="input-group-prepend">
+            <button class="btn btn-outline-success" type="button" id="button-addon1">&#8593</button>
+          </div>
+          <input type="text" class="form-control" id="my_rating_input" placeholder="5" readonly>
+          <div class="input-group-append">
+            <button class="btn btn-outline-danger" type="button" id="button-addon1">&#8595</button>        
+          </div>
+        </div>
+
     </div>
 
+    <!--Right side-->
     <div class="col-md-9">
       <div class="card-body" style="padding: 0; margin-left: 20px;">
         <a href="{% url 'question_url' %}"><h5 class="card-title">Question number 1</h5></a>
