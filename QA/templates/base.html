@@ -8,27 +8,50 @@
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
   <!-- Подключаем Bootstrap CSS -->
   <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" >
-    <!--
-        
-    -->
-    <title> {% block title %} Que&Ayy {% endblock %} </title>
+
+  <title> {% block title %} Que&Ayy {% endblock %} </title>
   </head>
-  <body style="background-color: #f2f3ff;">
+  <body>
     {% include 'nav_bar.html' %}
-    <div class="row" style="margin-top: 76px; margin-bottom: 20px;">
+    <div id="main_area" class="row">
 
       <!-- Big left margin -->
       <div class="col-md-2"></div>
 
       <!-- Main column -->
-      <div class="col-md-6" style="background-color: white; box-shadow: 0 0 10px #9ea5ff; right: 10px; border: 0px solid; border-radius: 15px;">
+      <div id="main_column" class="col-md-6">
       {% block content %}
         No content for you today, my man
       {% endblock content %}
+      {% if is_paginated %}
+        <div class="my_pagination">
+          <nav aria-label="...">
+            <ul class="pagination mb-0">
+              <li class="page-item {% if not prev_url %} disabled {% endif %}">
+                <a class="page-link" href="{{ prev_url }}" tabindex="-1">Previous</a>
+              </li>
+              {% for n in page_object.paginator.page_range %}
+                {% if page_object.number == n %}
+                  <li class="page-item active" aria-current="page">
+                    <a class="page-link" href="?page={{ n }}">{{ n }}<span class="sr-only">(current)</span></a>
+                  </li>
+                {% elif n > page_object.number|add:-3 and n < page_object.number|add:3 %}
+                  <li class="page-item">
+                    <a class="page-link" href="?page={{ n }}">{{ n }}</a>
+                  </li>
+                {% endif %}
+              {% endfor %}
+              <li class="page-item {% if not next_url %} disabled {% endif %}">
+                <a class="page-link" href="{{ next_url }}" tabindex="-1">Next</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      {% endif %}
       </div>
 
       <!-- Sidebar -->
-      <div class="col-md-2" style="position: fixed; left: calc((100% / 12 * 8) + 15px); display: table; background-color: white; box-shadow: 0 0 10px #9ea5ff; border: 0px solid; border-radius: 15px;">
+      <div id="sidebar" class="col-md-2">
         <div class="container mt-3">
           <h4>Popular tags</h4>
 
@@ -37,9 +60,8 @@
         </div>
         <div class="container mb-3">
           <h4>Best Members</h4>
-          <h6 style="color: red;">1st col goes crazy when changing the size of the screen</h6>
-
-
+          <h6 style="color: red;">make sticky block of question info</h6>
+          <h6 style="color: red;">Fix avatar paths in details</h6>
         </div>
       </div>
 
@@ -47,16 +69,6 @@
       <div class="col-md-2"></div>
 
     </div>
-
-<!--
-    <div class="container-fluid" style="margin: 0, auto; max-width: 800px; background-color: black; color: white;">
-      <div class="row">
-        <div class="col-md-2">
-          <h3>Title 2</h3>
-        </div>
-      </div>
-    </div>
--->
 
     <!-- Подключаем jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

@@ -1,20 +1,12 @@
-<style type="text/css">
-  .my_nav {
-    background: #fc0;
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
-  }
-</style>
-
-<nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light my_nav">
-  <!--<a class="navbar-brand" href="#">Navbar</a>-->
-  <a class="navbar-brand" href="{% url 'questions_list_url' %}">
-    <span style="margin: -0.125rem; color: #fe00cc">Q</span>
-    <span style="margin: -0.125rem; color: #b313b9">u</span>
-    <span style="margin: -0.125rem; color: #333399">e</span>
-    <span style="margin: -0.125rem; color: #2ed200">&</span>
-    <span style="margin: -0.125rem; color: #c31432">A</span>
-    <span style="margin: -0.125rem; color: #700f34">y</span>
-    <span style="margin: -0.125rem; color: #240b36">y</span>
+<nav id="my_nav" class="navbar navbar-expand-lg navbar-light fixed-top">
+  <a class="logo navbar-brand" href="{% url 'questions_list_url' %}">
+    <span class="logo1">Q</span>
+    <span class="logo2">u</span>
+    <span class="logo3">e</span>
+    <span class="logo4">&</span>
+    <span class="logo5">A</span>
+    <span class="logo6">y</span>
+    <span class="logo7">y</span>
   </a>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -24,7 +16,7 @@
     </form>
   </div>
 
-  <div class="justify-content-right" style="display: inline-flex;">
+  <div class="d-flex flex-row">
     <a href="{% url 'ask_url' %}"><button class="btn btn-outline-info my-2 my-sm-0" type="submit">ASK!</button></a>
 
     <div class="nav-item dropdown">

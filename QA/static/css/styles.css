@@ -1,5 +1,150 @@
 body {
-/*	background-color: #f2f3ff;*/
-	background-color: black;
-/*	 background: url({% static 'images/myapp/my.png' %}) top left repeat;  */
+	background-color: #f2f3ff!important;
+}
+
+/* Navigation bar */
+/* Navigation bar */
+/* Navigation bar */
+
+#my_nav {
+    background-color: #fdfffe;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.logo span {
+	margin: -0.125rem;
+}
+
+.logo1 { color: #fe00cc; }
+.logo2 { color: #b313b9; }
+.logo3 { color: #333399; }
+.logo4 { color: #2ed200; }
+.logo5 { color: #c31432; }
+.logo6 { color: #700f34; }
+.logo7 { color: #240b36; }
+
+/* ********* */
+/* base.html */
+/* ********* */
+
+#main_area {
+	margin-top: 76px;
+	margin-bottom: 20px;
+}
+
+#main_column {
+	background-color: white;
+	box-shadow: 0 0 10px #9ea5ff;
+	right: 10px;
+	border: 0px solid;
+	border-radius: 15px;
+	padding: 1rem;
+}
+
+#sidebar {
+	position: fixed;
+	left: calc((100% / 12 * 8) + 15px);
+	display: table;
+	background-color: white;
+	box-shadow: 0 0 10px #9ea5ff;
+	border: 0px solid;
+	border-radius: 15px;
+}
+
+
+/* index.html */
+/* index.html */
+/* index.html */
+
+.my_pagination {
+	max-width: 300px;
+	margin: 0 auto;
+}
+
+
+/* login.html */
+/* login.html */
+/* login.html */
+
+.login_form {
+	margin: 5rem auto;
+}
+
+.form_centered {
+    width: 221px!important;
+    margin: 0 auto;
+}
+
+#or_else {
+	margin-top: -0.8rem;
+	color: #efefef
+}
+
+
+/* question.html */
+/* question.html */
+/* question.html */
+
+#separator {
+	height: 1px;
+}
+
+
+/* answer_card.html */
+/* answer_card.html */
+/* answer_card.html */
+
+.my_answer_card {
+	padding: 20px;
+}
+
+#correct_btn {
+	display: block;
+	margin: 20px auto;
+}
+
+#my_card_body {
+	padding: 0;
+    margin-left: 20px;
+}
+
+
+/* question_card.html */
+/* question_card.html */
+/* question_card.html */
+
+#my_card {
+    border: 1px solid white;
+    border-radius: 15px;
+    box-shadow: 0 0 5px #28e3c4;
+    padding: 20px;
+    transition-duration: 0.3s;
+}
+#my_card:hover {
+    background-color: #f2f3ff;
+    border: 1px solid #28e3b4;
+    transition-duration: 0.3s;
+}
+.my_rating {
+    max-width: 100px;
+    height: 38px;
+    margin: 1rem auto 0;
+}
+.my_rating button {
+    width: 25px;
+    padding: 0;
+    background-color: white;
+    font-size: 0.9rem;
+    transition-duration: 0.3s;
+}
+#my_rating_input {  /* why doesn't work " .my_rating input {} " ?? */
+    border: 1px solid #007bff;
+    padding: 0;
+    background-color: white;
+    text-align: center;
+    max-height: 38px;
+    font-size: 1.25rem;
+}
+#my_rating_input::placeholder {
+    color: #007bff;
 }

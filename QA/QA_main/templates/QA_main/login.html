@@ -6,21 +6,14 @@
 
 {% block content %}
 
-<style type="text/css">
-  .form_centered {
-    width: 221px;
-    margin: 0 auto;
-  }
-</style>
-
-<form class="form-signin text-center" style="margin: 5rem auto">
-	<img class="rounded mb-4" src="{% static 'images/joji.jpg' %}" alt="" width="144" height="144">
+<form class="form-signin text-center login_form">
+	<img class="rounded mb-4" src="{% static 'images/logo.png' %}" alt="" width="144" height="144">
 	<h1 class="h2 mb-0 font-weight-normal">Please sign in</h1>
-	<p class="mb-2" style="margin-top: -0.8rem; color: #efefef"><small>or else</small></p>
+	<p id="or_else" class="mb-2"><small>or else</small></p>
 	<label for="inputEmail" class="sr-only">Email address</label>
 	<input type="email" id="inputEmail" class="form-control form_centered" placeholder="Email address" required="" autofocus="">
 	<label for="inputPassword" class="sr-only">Password</label>
-	<input type="password" id="inputPassword" class="form-control form_centered" placeholder="Password" required="">
+	<input type="password" id="inputPassword" class="form_centered form-control" placeholder="Password" required="">
 	<div class="checkbox mt-2 mb-2">
 		<label>
 			<input type="checkbox" value="remember-me"> Remember me

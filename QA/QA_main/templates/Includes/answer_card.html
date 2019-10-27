@@ -1,25 +1,21 @@
 {% load static %}
 
 <!--Question card-->
-<div class="card mb-3" style="padding: 20px;">
+<div class="card my_answer_card mb-3">
   <div class="row no-gutters">
     <div class="col-md-3 text-center">
-      <a href="{% url 'question_url' %}"><img src="{% static 'images/joji.jpg' %}" class="card-img" alt="..."></a>
-      <button type="button" class="btn btn-success" style="display: block; margin: 20px auto;"><span class="badge badge-light">✓</span>  Correct</button>
-      <a href="#" class="badge badge-secondary">_UP_</a>
-      <a href="#" class="badge badge-secondary">DOWN</a>
+      <!-- Important! Here is a slash in img -->
+      <a href="#"><img src="/{{ answer.author.avatar }}" class="card-img" alt="..."></a>
+      {% if answer.correctness %}
+        <button type="button" id="correct_btn" class="btn btn-success"><span class="badge badge-light">✓</span>  Correct</button>
+      {% endif %}
+      {% include 'Includes/my_rating.html' %}
     </div>
 
     <div class="col-md-9">
-      <div class="card-body" style="padding: 0; margin-left: 20px;">
-        <h5 class="card-title">Answer number 1</h5>
-        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <p class="card-text"><small class="text-muted">Answered by *user at *date</small></p>
+      <div id="my_card_body" class="card-body">
+        <p class="card-text">{{ answer.body }}</p>
+        <p class="card-text"><small class="text-muted">Answered by {{ answer.author }} at {{ answer.datetime }}</small></p>
       </div>
     </div>
   </div>
