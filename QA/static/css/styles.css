@@ -108,6 +108,18 @@ body {
     margin-left: 20px;
 }
 
+#answer_spacer {
+    width: 200px;
+    height: 15px;
+    float: left;
+    display: inline-block;
+}
+
+.answer_info {
+    position: absolute;
+    bottom: 0;
+}
+
 
 /* question_card.html */
 /* question_card.html */
@@ -147,4 +159,16 @@ body {
 }
 #my_rating_input::placeholder {
     color: #007bff;
+}
+
+#question_spacer {
+    width: 200px;
+    height: 100px;
+    float:left;
+    display:inline-block;
+}
+
+.question_info {
+    position: absolute;
+    bottom: 0;
 }

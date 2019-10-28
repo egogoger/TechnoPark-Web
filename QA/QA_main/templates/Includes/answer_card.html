@@ -9,13 +9,16 @@
       {% if answer.correctness %}
         <button type="button" id="correct_btn" class="btn btn-success"><span class="badge badge-light">✓</span>  Correct</button>
       {% endif %}
-      {% include 'Includes/my_rating.html' %}
+      {% include 'Includes/my_rating.html' with object=answer %}
     </div>
 
     <div class="col-md-9">
       <div id="my_card_body" class="card-body">
         <p class="card-text">{{ answer.body }}</p>
-        <p class="card-text"><small class="text-muted">Answered by {{ answer.author }} at {{ answer.datetime }}</small></p>
+
+        <div id="answer_spacer"></div>
+
+        <p class="card-text answer_info"><small class="text-muted">Answered by {{ answer.author }} at {{ answer.datetime }}</small></p>
       </div>
     </div>
   </div>

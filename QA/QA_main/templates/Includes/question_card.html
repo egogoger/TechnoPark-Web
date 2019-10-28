@@ -10,7 +10,7 @@
         <!-- Important! Here is a slash in img -->
         <img src="/{{ question.author.avatar }}" class="card-img" alt="...">
       </a>
-      {% include 'Includes/my_rating.html' %}
+      {% include 'Includes/my_rating.html' with object=question %}
     </div>
 
     <!--Right side-->
@@ -18,7 +18,10 @@
       <div id="my_card_body" class="card-body">
         <a href="{% url 'question_detail_url' slug=question.slug %}"><h5 class="card-title">{{ question.title }}</h5></a>
         <p class="card-text">{{ question.body }}</p>
-        <div class="footer mt-auto">
+
+        <div id="question_spacer"></div>
+
+        <div class="question_info">
           <a href="{% url 'question_detail_url' slug=question.slug %}"><button type="button" class="btn btn-primary mb-2"><span class="badge badge-light">{{ question.answers.count }}</span>  Answers</button></a>
           <div class="d-flex justify-content-left">
             {% for tag in question.tags.all %}
@@ -27,6 +30,7 @@
           </div>
           <p class="card-text"><small class="text-muted">Asked by {{ question.author }} at {{ question.datetime_published }}</small></p>
         </div>
+      
       </div>
     </div>
     
