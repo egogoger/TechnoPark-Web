@@ -10,9 +10,7 @@
         <!-- Important! Here is a slash in img -->
         <img src="/{{ question.author.avatar }}" class="card-img" alt="...">
       </a>
-
       {% include 'Includes/my_rating.html' %}
-
     </div>
 
     <!--Right side-->
@@ -24,7 +22,7 @@
           <a href="{% url 'question_detail_url' slug=question.slug %}"><button type="button" class="btn btn-primary mb-2"><span class="badge badge-light">{{ question.answers.count }}</span>  Answers</button></a>
           <div class="d-flex justify-content-left">
             {% for tag in question.tags.all %}
-              <a href="{% url 'tags_url' %}" class="badge badge-secondary mr-1">{{ tag.title }}</a>
+              <a href="{% url 'tag_detail_url' title=tag.title %}" class="badge badge-secondary mr-1">{{ tag.title }}</a>
             {% endfor %}
           </div>
           <p class="card-text"><small class="text-muted">Asked by {{ question.author }} at {{ question.datetime_published }}</small></p>

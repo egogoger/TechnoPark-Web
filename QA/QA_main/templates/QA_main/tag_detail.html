@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %} Tag - "{{ tag.title }}" {% endblock title %}
+
+{% block content %}
+
+  <div class="d-flex justify-content-left mb-3">
+    <h3>Questions with a <span class="badge badge-secondary mr-1">{{ tag.title }}</span> tag - {{ tag.questions.count }}</h3>
+  </div>
+
+  {% for question in page_object %}
+    {% include 'Includes/question_card.html' with question=question %}
+  {% endfor %}
+
+{% endblock content %}
+
