@@ -38,6 +38,14 @@ class Profile(models.Model):
         ordering = ['-rating']
 
 
+class QuestionManager(models.Manager):
+    def show_new(self):
+        return self.order_by('-datetime_published')
+
+    def show_top(self):
+        return self.order_by('-rating')
+        
+
 class Question(models.Model):
     title =     models.CharField(max_length=255, verbose_name='Заголовок')
     body =      models.TextField(blank=True, verbose_name='Текст')
@@ -56,6 +64,8 @@ class Question(models.Model):
         verbose_name_plural = 'Вопросы'
         ordering = ['-datetime_published']
         unique_together = [('title'), ('body')]
+
+    objects = QuestionManager()    
 
 
 class Answer(models.Model):

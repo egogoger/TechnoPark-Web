@@ -2,7 +2,9 @@ from django.urls import path
 from .views import *
 
 urlpatterns = [
-    path('',            questions_list, name='questions_list_url'),
+	path('', 			redirect_new),
+    path('new/',        questions_list_new, name='questions_list_new_url'),
+    path('top/',        questions_list_top, name='questions_list_top_url'),
     path('login/',      login,          name='login_url'),
     path('signup/',     signup,         name='signup_url'),
     path('question/<str:slug>/',
