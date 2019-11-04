@@ -8,9 +8,16 @@
     <h3>Questions with a <span class="badge badge-secondary">{{ tag.title }}</span> tag - {{ tag.questions.count }}</h3>
   </div>
 
-  {% for question in page_object %}
-    {% include 'Includes/question_card.html' with question=question %}
-  {% endfor %}
+  {% if tag.questions.count %}
+	  {% for question in page_object %}
+	    {% include 'Includes/question_card.html' with question=question %}
+	  {% endfor %}
+	{% else %}
+		<div class="no_questions_for_tag">
+			<h6>No questions for this tag yet, but you can be first!</h4>
+			<a href="{% url 'ask_url' %}"><button class="btn btn-outline-info my-2 my-sm-0" type="submit">ASK!</button></a>
+		</div>
+	{% endif %}
 
 {% endblock content %}
 

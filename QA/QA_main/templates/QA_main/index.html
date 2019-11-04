@@ -3,14 +3,31 @@
 {% load static %}
 
 {% block content %}
-    
+
 <!--Block for questions-->
   <div class="mb-3">
     <ul class="list-inline">
-      <li class="list-inline-item"><a href="{% url 'questions_list_new_url' %}"><h3>New questions</h3></a></li>
-      <li class="list-inline-item ml-3"><a href="{% url 'questions_list_top_url' %}"><h5>Top questions</h5></a></li>
+      <li class="list-inline-item">
+        <a href="{% url 'questions_list_new_url' %}">
+          {% if mode == "new" %}
+            <h3>New questions</h3>
+          {% else %}
+            <h5>New questions</h5>
+          {% endif %}
+        </a>
+      </li>
+      <li class="list-inline-item ml-3">
+        <a href="{% url 'questions_list_top_url' %}">
+          {% if mode == "top" %}
+            <h3>Top questions</h3>
+          {% else %}
+            <h5>Top questions</h5>
+          {% endif %}
+        </a>
+      </li>
     </ul>
   </div>
+
   <div>
     {% for question in page_object %}
       {% include 'Includes/question_card.html' with question=question %}

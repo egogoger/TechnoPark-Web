@@ -16,6 +16,7 @@ def questions_list_new(request):
     questions = Question.objects.show_new()
 
     context = paginator(request, questions, QUESTIONS_PER_PAGE)
+    context['mode'] = 'new'
     return render(request, 'QA_main/index.html', context=context)
 
 
@@ -28,6 +29,7 @@ def questions_list_top(request):
         questions = Question.objects.show_top()
 
     context = paginator(request, questions, QUESTIONS_PER_PAGE)
+    context['mode'] = 'top'
     return render(request, 'QA_main/index.html', context=context)
 
 

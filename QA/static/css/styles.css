@@ -2,9 +2,9 @@ body {
 	background-color: #f2f3ff!important;
 }
 
-/* Navigation bar */
-/* Navigation bar */
-/* Navigation bar */
+                                /* ************** */
+                                /* Navigation bar */
+                                /* ************** */
 
 #my_nav {
     background-color: #fdfffe;
@@ -23,9 +23,9 @@ body {
 .logo6 { color: #700f34; }
 .logo7 { color: #240b36; }
 
-/* ********* */
-/* base.html */
-/* ********* */
+                                /* ********* */
+                                /* base.html */
+                                /* ********* */
 
 #main_area {
 	margin-top: 76px;
@@ -52,9 +52,9 @@ body {
 }
 
 
-/* index.html */
-/* index.html */
-/* index.html */
+                                /* ********** */
+                                /* index.html */
+                                /* ********** */
 
 .my_pagination {
 	max-width: 300px;
@@ -62,9 +62,9 @@ body {
 }
 
 
-/* login.html */
-/* login.html */
-/* login.html */
+                                /* ********** */
+                                /* login.html */
+                                /* ********** */
 
 .login_form {
 	margin: 5rem auto;
@@ -81,18 +81,18 @@ body {
 }
 
 
-/* question.html */
-/* question.html */
-/* question.html */
+                                /* ************* */
+                                /* question.html */
+                                /* ************* */
 
 #separator {
 	height: 1px;
 }
 
 
-/* answer_card.html */
-/* answer_card.html */
-/* answer_card.html */
+                                /* **************** */
+                                /* answer_card.html */
+                                /* **************** */
 
 .my_answer_card {
 	padding: 20px;
@@ -121,9 +121,9 @@ body {
 }
 
 
-/* question_card.html */
-/* question_card.html */
-/* question_card.html */
+                                /* ****************** */
+                                /* question_card.html */
+                                /* ****************** */
 
 #my_card {
     border: 1px solid white;
@@ -149,7 +149,7 @@ body {
     font-size: 0.9rem;
     transition-duration: 0.3s;
 }
-#my_rating_input {  /* why doesn't work " .my_rating input {} " ?? */
+#my_rating_input { /* why doesn't work " .my_rating input {} " ?? */
     border: 1px solid #007bff;
     padding: 0;
     background-color: white;
@@ -171,4 +171,12 @@ body {
 .question_info {
     position: absolute;
     bottom: 0;
+}
+
+                                /* *************** */
+                                /* tag_detail.html */
+                                /* *************** */
+
+.no_questions_for_tag {
+    text-align: center;
 }
