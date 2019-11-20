@@ -4,14 +4,14 @@
 
 {% block content %}
 
-  <div class="d-flex justify-content-left mb-3">
-    <h3>Questions with a <span class="badge badge-secondary">{{ tag.title }}</span> tag - {{ tag.questions.count }}</h3>
-  </div>
+	 <div class="d-flex justify-content-left mb-3">
+	    <h3>Questions with a <span class="badge badge-secondary">{{ tag.title }}</span> tag - {{ tag.questions.count }}</h3>
+	 </div>
 
-  {% if tag.questions.count %}
-	  {% for question in page_object %}
-	    {% include 'Includes/question_card.html' with question=question %}
-	  {% endfor %}
+  	{% if tag.questions.count %}
+		{% for question in page_object %}
+		    {% include 'Includes/question_card.html' with question=question %}
+		{% endfor %}
 	{% else %}
 		<div class="no_questions_for_tag">
 			<h6>No questions for this tag yet, but you can be first!</h4>
@@ -20,4 +20,3 @@
 	{% endif %}
 
 {% endblock content %}
-

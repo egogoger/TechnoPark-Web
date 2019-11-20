@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %} Questions by "{{ profile.user.username }}" {% endblock title %}
+
+{% block content %}
+
+	 <div class="d-flex justify-content-left mb-3">
+	    <h3>Questions by <span class="badge badge-success">{{ profile.user.username }}</span> - {{ profile.questions.count }}</h3>
+	 </div>
+
+  	{% if profile.questions.count %}
+		{% for question in page_object %}
+		    {% include 'Includes/question_card.html' with question=question %}
+		{% endfor %}
+	{% else %}
+		<div class="no_questions_for_tag">
+			<h6>No questions from {{ profile.user.username }} yet!</h4>
+		</div>
+	{% endif %}
+
+{% endblock content %}

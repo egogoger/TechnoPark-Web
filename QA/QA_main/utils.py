@@ -1,10 +1,24 @@
 from django.core.paginator import Paginator
+from django.http import Http404
 
 
-def paginator(request, object_list, amount):
-    paginator = Paginator(object_list, amount)
-    page_number = request.GET.get('page', 1)
-    page = paginator.get_page(page_number)
+def paginator(request, object_list):
+    try:
+        limit = int(request.GET.get('limit', 10))
+    except ValueError:
+        limit = 10
+    if limit > 100:
+        limit = 10
+    try:
+        page_number = int(request.GET.get('page', 1))
+    except ValueError:
+        raise Http404
+    paginator = Paginator(object_list, limit)
+
+    try:
+        page = paginator.get_page(page_number)
+    except EmptyPage:
+        page = paginator.get_page(paginator.num_pages)
 
     is_paginated = page.has_other_pages()
 

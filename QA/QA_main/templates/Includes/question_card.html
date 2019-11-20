@@ -6,7 +6,7 @@
 
     <!--Left side-->
     <div class="col-md-3">
-      <a href="{% url 'question_detail_url' slug=question.slug %}">
+      <a href="{% url 'question_detail_url' id=question.id %}">
         <!-- Important! Here is a slash in img -->
         <img src="/{{ question.author.avatar }}" class="card-img" alt="...">
       </a>
@@ -16,13 +16,13 @@
     <!--Right side-->
     <div class="col-md-9">
       <div id="my_card_body" class="card-body">
-        <a href="{% url 'question_detail_url' slug=question.slug %}"><h5 class="card-title">{{ question.title }}</h5></a>
+        <a href="{% url 'question_detail_url' id=question.id %}"><h5 class="card-title">{{ question.title }}</h5></a>
         <p class="card-text">{{ question.body }}</p>
 
         <div id="question_spacer"></div>
 
         <div class="question_info">
-          <a href="{% url 'question_detail_url' slug=question.slug %}"><button type="button" class="btn btn-primary mb-2"><span class="badge badge-light">{{ question.answers.count }}</span>  Answers</button></a>
+          <a href="{% url 'question_detail_url' id=question.id %}"><button type="button" class="btn btn-primary mb-2"><span class="badge badge-light">{{ question.answers.count }}</span>  Answers</button></a>
           <div class="d-flex justify-content-left">
             {% for tag in question.tags.all %}
               <a href="{% url 'tag_detail_url' title=tag.title %}" class="badge badge-secondary mr-1">{{ tag.title }}</a>

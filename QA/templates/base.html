@@ -24,32 +24,9 @@
         No content for you today, my man
       {% endblock content %}
       {% if is_paginated %}
-        <div class="my_pagination">
-          <nav aria-label="...">
-            <ul class="pagination mb-0">
-              <li class="page-item {% if not prev_url %} disabled {% endif %}">
-                <a class="page-link" href="{{ prev_url }}" tabindex="-1">Previous</a>
-              </li>
-              {% for n in page_object.paginator.page_range %}
-                {% if page_object.number == n %}
-                  <li class="page-item active" aria-current="page">
-                    <a class="page-link" href="?page={{ n }}">{{ n }}<span class="sr-only">(current)</span></a>
-                  </li>
-                {% elif n > page_object.number|add:-3 and n < page_object.number|add:3 %}
-                  <li class="page-item">
-                    <a class="page-link" href="?page={{ n }}">{{ n }}</a>
-                  </li>
-                {% endif %}
-              {% endfor %}
-              <li class="page-item {% if not next_url %} disabled {% endif %}">
-                <a class="page-link" href="{{ next_url }}" tabindex="-1">Next</a>
-              </li>
-            </ul>
-          </nav>
-        </div>
+        {% include 'paginator.html' with page_object=page_object %}
       {% endif %}
       </div>
-
       <!-- Sidebar -->
       <div id="sidebar" class="col-md-2">
         <h4 class="mt-3">Popular tags</h4>
@@ -61,12 +38,13 @@
         <h4 class="mt-3">Best Members</h4>
         <div class="ml-2 mr-2 mb-3">
           {% for user in sidebar_users %}
-            <span class="badge badge-success mr-1">{{ user.username }}</span>
+            <a href="{% url 'users_questions_url' username=user.username %}" class="badge badge-success mr-1">{{ user.username }}</a>
           {% endfor %}
         </div>
         <h4 class="mt-3">TODO</h4>
         <div class="ml-2 mr-2 mb-3">
-          <h6 style="color: green;">Everything is OK (probably)</h6>
+          <h6 style="color: red;">Template filter for rating</h6>
+          <h6 style="color: red;">Center paginator</h6>
         </div>
       </div>
 

@@ -21,8 +21,7 @@
     </div>
   {% endif %}
   
-
-  {% for answer in question.answers.all %}
+  {% for answer in page_object %}
     {% include 'Includes/answer_card.html' with answer=answer %}
   {% endfor %}
 
@@ -37,7 +36,7 @@
   <div class="form-group">
     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="I'm feeling lucky..."></textarea>
   </div>
-  <button class="btn btn-lg btn-primary btn-block form_centered" type="submit">Answer</button>
+  <button class="btn btn-lg btn-primary btn-block form_centered mb-3" type="submit">Answer</button>
 
 {% endblock content %}
 
