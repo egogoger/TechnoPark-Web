@@ -133,3 +133,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "uploads")
 
 CENTRIFUGO_KEY = 'cent_api_key'
 CENTRIFUGO_HOST = '127.0.0.1:8001'
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        'LOCATION': '/tmp/django_cache',
+    }
+}

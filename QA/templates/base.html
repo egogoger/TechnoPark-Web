@@ -37,8 +37,8 @@
         </div>
         <h4 class="mt-3">Best Members</h4>
         <div class="ml-2 mr-2 mb-3">
-          {% for user in sidebar_users %}
-            <a href="{% url 'users_questions_url' username=user.username %}" class="badge badge-success mr-1">{{ user.username }}</a>
+          {% for username in sidebar_users %}
+            <a href="{% url 'users_questions_url' username %}" class="badge badge-success mr-1">{{ username }}</a>
           {% endfor %}
         </div>
         <h4 class="mt-3">TODO</h4>

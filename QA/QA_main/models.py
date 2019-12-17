@@ -15,15 +15,18 @@ class ProfileManager(models.Manager):
                     avatar=image,
                     date=cleaned_data['date'])
 
+    def get_top(self):
+        return self.order_by('-rating')[:10]
+
 
 class Profile(models.Model):
-    user =      models.OneToOneField(User, on_delete=models.CASCADE)
-    avatar =    models.ImageField(blank=True, upload_to='avatars/',
+    user      = models.OneToOneField(User, on_delete=models.CASCADE)
+    avatar    = models.ImageField(blank=True, upload_to='avatars/',
                                   default='uploads/avatars/crowd.jpg')
-    date =      models.DateField(null=True, verbose_name='День Рождения')
-    rating =    models.IntegerField(default=0)
+    date      = models.DateField(null=True, verbose_name='День Рождения')
+    rating    = models.IntegerField(default=0)
 
-    objects = ProfileManager()
+    objects   = ProfileManager()
 
     def __str__(self):
         return self.user.username
@@ -52,17 +55,17 @@ class QuestionManager(models.Manager):
 
 
 class Question(models.Model):
-    title =     models.CharField(max_length=255, verbose_name='Заголовок')
-    body =      models.TextField(blank=True, verbose_name='Текст')
-    author =    models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='questions')
+    title     = models.CharField(max_length=255, verbose_name='Заголовок')
+    body      = models.TextField(blank=True, verbose_name='Текст')
+    author    = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='questions')
     datetime_published = models.DateTimeField(auto_now_add=True, verbose_name='Дата публикации')
-    rating =    models.IntegerField(default=0, verbose_name='Рейтинг')
+    rating    = models.IntegerField(default=0, verbose_name='Рейтинг')
 
-    tags =      models.ManyToManyField('Tag',
+    tags      = models.ManyToManyField('Tag',
                                     blank=True,
                                     related_name='questions',
                                     verbose_name='Теги')
-    objects = QuestionManager()
+    objects   = QuestionManager()
 
     def __str__(self):
         return self.title
@@ -75,11 +78,11 @@ class Question(models.Model):
 
 
 class Answer(models.Model):
-    body =          models.TextField(null=True, verbose_name='Текст')
-    author =        models.ForeignKey(Profile, on_delete=models.CASCADE)
-    datetime =      models.DateTimeField(auto_now_add=True, verbose_name='Дата публикации')
-    correctness =   models.BooleanField(default=False, verbose_name='Правильность')
-    questions =     models.ForeignKey(Question,
+    body          = models.TextField(null=True, verbose_name='Текст')
+    author        = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    datetime      = models.DateTimeField(auto_now_add=True, verbose_name='Дата публикации')
+    correctness   = models.BooleanField(default=False, verbose_name='Правильность')
+    questions     = models.ForeignKey(Question,
                                     null=True,
                                     related_name='answers',
                                     verbose_name='Вопросы',
