@@ -90,6 +90,8 @@ def signup(request):
 
         if form.is_valid():
             Profile.objects.save(form.cleaned_data, request.FILES['avatar'])
+            user = User.objects.get(username=form.cleaned_data['username'])
+            login(request, user)
             return redirect('success_signup_url')
     else:
         form = SignUpForm()
@@ -108,6 +110,7 @@ def ask(request):
         current_user = Profile.objects.get(user=request.user)
 
         if form.is_valid():
+            send_message(form.cleaned_data)
             Question.objects.save(form.cleaned_data, current_user)
             return redirect('question_detail_url', id=(Question.objects.get(title__iexact=form.cleaned_data['title'],
                                                                             body__iexact=form.cleaned_data['body']).pk))
@@ -129,3 +132,38 @@ def tag_detail(request, title):
 
     context['tag'] = t
     return render(request, 'QA_main/tag_detail.html', context)
+
+
+
+# pip install requests
+from django.conf import settings
+import json
+import requests
+def send_message(question):
+    command = {
+        "method": "publish",
+        "params": {
+            "channel": "new_posts",
+            "data": {
+                "question_title": "blablabla",
+            }
+        }
+    }
+
+    headers = {
+        "Content-type": "application/json",
+        "Authorization": "apikey " + settings.CENTRIFUGO_KEY
+    }
+
+    print("send message post")
+    
+    requests.post(
+        "http://{}/api".format(settings.CENTRIFUGO_HOST),
+        data=json.dumps(command),
+        headers=headers,
+    )
+
+
+
+
+

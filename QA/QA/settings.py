@@ -127,3 +127,9 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
+
+MEDIA_URL = '/uploads/'
+MEDIA_ROOT = os.path.join(BASE_DIR, "uploads")
+
+CENTRIFUGO_KEY = 'cent_api_key'
+CENTRIFUGO_HOST = '127.0.0.1:8001'

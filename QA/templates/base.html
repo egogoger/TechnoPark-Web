@@ -45,6 +45,7 @@
         <div class="ml-2 mr-2 mb-3">
           <h6 style="color: red;">Template filter for rating</h6>
           <h6 style="color: red;">Center paginator</h6>
+          <h6 style="color: red;">Default avatar in SingUp</h6>
         </div>
       </div>
 
@@ -55,6 +56,10 @@
 
     <!-- Подключаем jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="{% static 'js/vote.js' %}"></script>
     <!-- Подключаем Bootstrap JS -->    
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+    <!-- Подключаем Centrifuge -->
+    <script src="//cdn.rawgit.com/centrifugal/centrifuge-js/2.3.0/dist/centrifuge.min.js"></script>
+    <script type="text/javascript" src="{% static 'js/my.js' %}"></script>
   </body>

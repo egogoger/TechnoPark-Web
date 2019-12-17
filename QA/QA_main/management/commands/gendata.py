@@ -16,7 +16,7 @@ django.setup()
 fake = Faker()
 
 def generate_users(user_size):
-    path = 'static/images/avatars/'
+    path = 'uploads/avatars/'
     usernames = list(set(Provider.first_names))
     random.seed(datetime.now())
     random.shuffle(usernames)
@@ -33,7 +33,7 @@ def generate_users(user_size):
                 if os.path.isfile(os.path.join(path, x))])
             if avatar == '.DS_Store':
                 avatar = 'crowd.jpg'
-            avatar = path + avatar
+            avatar = 'avatars/' + avatar
             
             user = User.objects.create(username=username, email=email, password="password")
             Profile.objects.create(user=user, avatar=avatar)
@@ -107,7 +107,6 @@ def generate_likes(likes_size):
         if not Like.objects.filter(liker=author, liked=question).exists():
             Like.objects.create(liker=author, liked=question)
             i += 1
-
 
 
 class Command(BaseCommand):

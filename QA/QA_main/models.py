@@ -1,12 +1,4 @@
 # coding=utf-8
-'''
-    Пользователь – электронная почта, никнейм, пароль, аватарка, дата регистрации, рейтинг.
-    Вопрос – заголовок, содержание, автор, дата создания, теги, рейтинг.
-    Ответ – содержание, автор, дата написания, флаг правильного ответа, рейтинг.
-    Тег – слово тега.
-'''
-
-
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -26,8 +18,8 @@ class ProfileManager(models.Manager):
 
 class Profile(models.Model):
     user =      models.OneToOneField(User, on_delete=models.CASCADE)
-    avatar =    models.ImageField(blank=True, upload_to='static/images/avatars/',
-                                  default='static/images/avatars/crowd.jpg')
+    avatar =    models.ImageField(blank=True, upload_to='avatars/',
+                                  default='uploads/avatars/crowd.jpg')
     date =      models.DateField(null=True, verbose_name='День Рождения')
     rating =    models.IntegerField(default=0)
 
