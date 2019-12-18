@@ -97,8 +97,16 @@ class Answer(models.Model):
         ordering = ['-correctness', '-datetime']
 
 
+class TagManager(models.Manager):
+    def get_top(self):
+        return self.order_by('-rating')[:10]
+
+
 class Tag(models.Model):
     title = models.CharField(max_length=50, unique=True)
+    rating = models.IntegerField(default=0, verbose_name='Рейтинг')
+
+    objects = TagManager()
 
     def __str__(self):
         return self.title
@@ -112,6 +120,7 @@ class Tag(models.Model):
 class Like(models.Model):
     liker = models.ForeignKey(Profile, related_name='liker', on_delete=models.CASCADE)
     liked = models.ForeignKey(Question, related_name='liked', on_delete=models.CASCADE)
+    value = models.SmallIntegerField(default=0, verbose_name='Значение')
 
     def __str__(self):
         return str(self.liker) + " LIKED " + str(self.liked)

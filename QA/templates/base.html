@@ -32,7 +32,7 @@
         <h4 class="mt-3">Popular tags</h4>
         <div class="ml-2 mr-2 mb-3">
           {% for tag in sidebar_tags %}
-            <a href="{% url 'tag_detail_url' title=tag.title %}" class="badge badge-secondary mr-1">{{ tag.title }}</a>
+            <a href="{% url 'tag_detail_url' tag %}" class="badge badge-secondary mr-1">{{ tag.title }}</a>
           {% endfor %}
         </div>
         <h4 class="mt-3">Best Members</h4>
