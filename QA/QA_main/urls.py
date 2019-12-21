@@ -6,6 +6,7 @@ urlpatterns = [
     path('new/',        questions_list_new, name='questions_list_new_url'),
     path('top/',        questions_list_top, name='questions_list_top_url'),
     path('questions-by/<str:username>', users_questions, name='users_questions_url'),
+    path('settings/<str:username>', user_settings, name='users_settings_url'),
     
     path('login/',      log_in,             name='login_url'),
     path('logout/',     log_out,            name='logout_url'),

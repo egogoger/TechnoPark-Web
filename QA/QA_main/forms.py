@@ -79,3 +79,29 @@ class LoginForm(AuthenticationForm):
 	password = forms.CharField(label='Password',
 		widget=forms.PasswordInput(attrs={'class': 'form-control form_centered',
 									'placeholder': 'Password'}))
+
+
+class SettingsForm(forms.ModelForm):
+	username = forms.CharField(label='Username',
+		widget=forms.TextInput(attrs={'class': 'form-control'}))
+	class Meta:
+		model = Profile
+		fields = ['username', 'avatar', 'date', 'rating']
+
+		labels = {
+			'date': _('Date of birth'),
+		}
+
+		widgets = {
+			'date': forms.DateInput(attrs={'class': 'form-control', 'placeholder': 'No date of birth'}),
+			'rating': forms.TextInput(attrs={'class': 'form-control', 'readonly':''}),
+		}
+
+	def clean(self):
+		if User.objects.filter(username__iexact=self.cleaned_data['username']).exists():
+			raise forms.ValidationError(
+				_("This username is already taken"),
+				code='username_taken',)
+		return self.cleaned_data
+
+

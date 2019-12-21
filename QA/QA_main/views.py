@@ -54,15 +54,12 @@ def question_detail(request, id):
 
 def log_in(request):
     if request.user.is_authenticated:
-        print("is_authenticated")
         #This one shouldn't even be able to be triggered
         return redirect('success_signup_url')
     if request.method == 'POST':
-        print("POST")
         form = LoginForm(request=request, data=request.POST)
 
         if form.is_valid():
-            print("here")
             user = authenticate(request,
                                 username=form.cleaned_data['username'],
                                 password=form.cleaned_data['password'])
@@ -73,7 +70,6 @@ def log_in(request):
             else:
                 raise forms.ValidationError("User not found")
     else:
-        print("GET")
         form = LoginForm()
     return render(request, 'QA_main/login.html', context={'form': form})
 
@@ -101,6 +97,19 @@ def signup(request):
 @login_required(redirect_field_name='login_url')
 def success_signup(request):
     return render(request, 'QA_main/success_signup.html', context={})
+
+
+@login_required(redirect_field_name='login_url')
+def user_settings(request, username):
+    # user = get_object_or_404(User, username=username)
+    profile = get_object_or_404(Profile, user=request.user)
+    if request.method == 'POST':
+        form = SettingsForm(request.POST, instance=profile, initial={'username': request.user.username})
+        if form.is_valid():
+            profile.update(form.cleaned_data, request.FILES.get('avatar', profile.avatar))
+    else:
+        form = SettingsForm(instance=profile, initial={'username': request.user.username})
+    return render(request, 'QA_main/user_settings.html', context={'form': form, 'user': request.user})
 
 
 @login_required(redirect_field_name='login_url')

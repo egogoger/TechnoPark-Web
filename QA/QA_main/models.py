@@ -31,6 +31,16 @@ class Profile(models.Model):
     def __str__(self):
         return self.user.username
 
+    def update(self, cleaned_data, image):
+        if (self.user.username != cleaned_data['username']):
+            self.user.username = cleaned_data['username']
+        if (self.avatar != image):
+            self.avatar = image
+        if (self.date != cleaned_data['date']):
+            self.date = cleaned_data['date']
+        self.user.save()
+        self.save()
+
     class Meta:
         verbose_name = 'Профиль'
         verbose_name_plural = 'Профили'

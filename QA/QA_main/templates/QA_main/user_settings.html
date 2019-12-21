@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	{{ user.username }} Profile
+{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-left mb-3">
+  <h3>Profile</h3>
+</div>
+
+<form action="{% url 'users_settings_url' username=user.username %}" method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+
+  {% for error in form.non_field_errors %}
+    {{ error }}
+    <!-- I am too tired now but maybe next time i'll insert modal window -->
+  {% endfor %}
+
+  {% for field in form %}
+    <div class="form-group">
+      {% if field.errors %}
+        <div class="alert alert-danger">
+          {{ field.errors }}
+        </div>
+      {% endif %}
+
+      {{ field.label }}
+      {{ field.help_text|safe }}
+      {{ field }}
+    </div>
+  {% endfor %}
+
+  <button type="submit" class="btn btn-primary">Submit changes</button>
+  
+</form>
+{% endblock %}
