@@ -4,8 +4,7 @@
 <div class="card my_answer_card mb-3">
   <div class="row no-gutters">
     <div class="col-md-3 text-center">
-      <!-- Important! Here is a slash in img -->
-      <a href="#"><img src="/{{ answer.author.avatar }}" class="card-img" alt="..."></a>
+      <a href="#"><img src="/uploads/{{ answer.author.avatar }}" class="card-img" alt="..."></a>
       {% if answer.correctness %}
         <button type="button" id="correct_btn" class="btn btn-success"><span class="badge badge-light">✓</span>  Correct</button>
       {% endif %}

@@ -8,3 +8,5 @@ cd TechnoPark-Web/QA/
 ./manage.py get_top --tags 1
 
 deactivate
+
+# TODO: got to venv/bin/python and run ./manage.py from there

@@ -7,7 +7,6 @@
     <!--Left side-->
     <div class="col-md-3">
       <a href="{% url 'question_detail_url' id=question.id %}">
-        <!-- Important! Here is a slash in img -->
         <img src="{{ question.author.avatar.url }}" class="card-img" alt="...">
       </a>
       {% include 'Includes/my_rating.html' with object=question %}
