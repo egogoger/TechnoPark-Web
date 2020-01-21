@@ -1,0 +1,48 @@
+Скачиваем image убунты
+	docker pull ubuntu:latest
+
+Стартуем убунту в контейнере
+	docker container run -it --restart=always -p 8000:80 ubuntu bash
+
+Обновляем убунту
+	apt-get update && apt-get upgrade
+
+Ставим нужные пакетик
+	apt-get install nginx-light python3 python3-pip python3-dev git vim apache2-utils
+	pip3 install django==2.2.7 requests Pillow IPython Faker gunicorn
+
+Скачиваем репу
+	git clone https://github.com/EgorBedov/TechnoPark-Web/
+
+Прописываем location в конфиге nginx
+	location / {
+		# First attempt to serve request as file, then
+		# as directory, then fall back to displaying a 404.
+		proxy_pass http://127.0.0.1:8000;
+	}
+
+	location /static/ {
+		root /usr/TechnoPark-Web/QA;
+	}
+
+Запускаем NGINX
+	service nginx start или /etc/init.d/nginx start
+	service nginx reload
+
+Запускаем gunicorn
+	gunicorn QA.wsgi -w <worker_num>
+
+
+Запускаем нагрузочные тесты
+	ab -c 10 -n 1000 https://127.0.0.1:80/ 
+
+
+--------------------ДОПОЛНИТЕЛЬНО--------------------
+Присоединить терминал к докеру
+	docker exec -it <id or name> bash
+
+Путь к конфигам nginx
+	/etc/nginx/sites-available/default
+
+Путь к логам nginx
+	/var/log/nginx/log
